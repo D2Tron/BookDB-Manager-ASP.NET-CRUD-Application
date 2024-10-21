@@ -1,0 +1,59 @@
+﻿@model Testproj.Models.Book
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<h1>Create</h1>
+
+<h4>Book</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="ISBN" class="control-label"></label>
+                <input asp-for="ISBN" class="form-control" />
+                <span asp-validation-for="ISBN" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Title" class="control-label"></label>
+                <input asp-for="Title" class="form-control" />
+                <span asp-validation-for="Title" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Price" class="control-label"></label>
+                <input asp-for="Price" class="form-control" />
+                <span asp-validation-for="Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Genre" class="control-label"></label><br />
+                <label><input value="Non-Fiction" type="radio" id="Genre" name="Genre">Non-Fiction</label><br />
+                <label><input value="Fantasy" type="radio" id="Genre" name="Genre">Fantasy</label><br />
+                <label><input value="Romance" type="radio" id="Genre" name="Genre">Romance</label><br />
+                <label><input value="Sci-Fi" type="radio" id="Genre" name="Genre">Sci-FI</label><br />
+                <label><input value="Other" type="radio" id="Genre" name="Genre">Other</label><br />
+            </div>
+            <div class="form-group">
+                <label asp-for="Author" class="control-label"></label>
+                <select asp-for="Author" class ="form-control" asp-items="ViewBag.AuthorID"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Publisher" class="control-label"></label>
+                <select asp-for="Publisher" class ="form-control" asp-items="ViewBag.PublisherID"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}
